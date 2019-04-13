@@ -23,7 +23,8 @@ class ViewController: UIViewController {
     @IBAction func check_nickname(_ sender: Any) {
         
         if(!textfield.text!.isEmpty){
-            Alamofire.request(githubAPI + textfield.text!).responseJSON { response in
+            let nickname = textfield.text!.trimmingCharacters(in: .whitespaces)
+            Alamofire.request(githubAPI + nickname).responseJSON { response in
                 switch(response.result){
                     case .success:
                         if let json = response.result.value as? [String:Any] {
